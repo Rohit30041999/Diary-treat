@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>MilkBooth</title>
+    <style>
+        body, html {
+            margin: 0 auto;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            padding-top: 100px;
+            text-align: left;
+        }
+
+        table, tr, td, th {
+            margin-left: 0;
+            text-align: left;
+            border: 1px solid black;
+        }
+
+        .container2 {
+            text-align: left;
+            margin-left: 0;
+        }
+
+        .Container1 {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .sub2 {
+            margin-left: 40px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h3>{{data[0].username}}'s Profile</h3>
+        <a href="/ResetAccount/{{data[0].id}}">Reset-Account</a><br><br>
+        <div class="Container1">
+            <table class="sub1">
+                <tr>
+                    <td>USERID: </td>
+                    <td>{{data[0].id}}</td>
+                </tr> 
+                <tr>
+                    <td>USERNAME: </td>
+                    <td>{{data[0].username}}</td>
+                </tr>
+                <tr>
+                    <td>EMAIL ID: </td>
+                    <td>{{data[0].gmailId}}</td>
+                </tr>
+                <tr>
+                    <td>ADDRESS: </td>     
+                    <td>{{data[0].address}}</td> 
+                </tr>
+                <tr>
+                    <td>STARTDATE</td>
+                    <td>{{data[0].startDate.date()}}</td>
+                </tr> 
+                <tr>
+                    <td>TOTAL AMOUNT: </td>
+                    <td>Rs.{{data[0].number_of_packets}}/-</td>
+                </tr>
+                <tr>
+                    <td>TOTAL LITERS: </td> 
+                    <td>{{data[0].number_of_liters}}</td>
+                </tr>
+                
+            </table>
+
+            <table class="sub2">
+                <tr class="GetData">
+                    <th>DATE</th>
+                    <th>AMOUNT ON THAT DAY</th>
+                    <th>TOTAL LITERS ON THAT DAY</th>
+                </tr>
+                {% for eachDate in data[1] %}
+                    <tr>
+                        <td>{{eachDate.day.date()}}</td>
+                        <td>Rs.{{eachDate.amount_on_that_day}}/-</td>
+                        <td>{{eachDate.liters_on_that_day}}</td>    
+                    </tr>
+                {% endfor %}
+            </table>
+
+            <div class="container2">
+                <form action="/StoreData/{{data[0].id}}" method="POST">
+                    <input type="submit" class="btn btn-info" value="StoreData"/>
+                </form>&nbsp;&nbsp;&nbsp;&nbsp;
+                <form action="/GetData/{{data[0].id}}" method="POST">
+                    <input type="submit" class="btn btn-info" value="GetData"/>
+                </form>&nbsp;&nbsp;&nbsp;&nbsp;
+                <form action="/Logout" method="POST">
+                    <input type="submit" class="btn btn-danger" value="Logout"/>
+                </form>
+            </div>
+        </div><br><br>
+    </div><br><br><br>
+
+{% endblock %}

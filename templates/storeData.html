@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>MilkBooth</title>
+    <style>
+        body, html {
+            margin: 0 auto;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            padding-top: 150px;
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h3>Storing Data</h3><br><br>
+        <form action="/Store/{{data.id}}" method="POST">
+            <label for="liters">Liters Took:</label>
+            <input type="text" name="liters" id="liters" placeholder="number of liters took"><br><br>
+            <input type="submit" class="btn btn-success" name="store" value="Store" id="store">
+        </form>
+    </div>
+
+{% endblock %}
