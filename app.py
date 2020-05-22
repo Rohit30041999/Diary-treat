@@ -173,4 +173,4 @@ if __name__ == '__main__':
     data = UsersDetails.query.order_by(UsersDetails.startDate).all()
     for d in data:
         print(str(d.id) + " | " + d.username + ' | ' + d.gmailId + ' | ' + d.address + ' | ' + str(d.startDate.date()) + ' | ' + str(d.number_of_packets) + ' | ' + str(d.number_of_liters))
-    app.run(debug=True)
+    app.run(host='0.0.0.0',debug=True)
