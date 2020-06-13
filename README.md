@@ -12,6 +12,15 @@ This application is used to store and access the day to day data of the milk in 
 
 2) pip3 or pip (Python Package manager)
 
+OR 
+
+1. Docker
+
+# Using Docker
+1. Go to the root directory.
+2. `docker build -t diaryTreat .`
+3. `docker run -p 5000:5000 --name dt diaryTreat`
+4. Visit localhost:5000/
 
 # Steps To run a flask app:
 
