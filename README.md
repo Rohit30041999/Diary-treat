@@ -1,4 +1,4 @@
-# Diary-treat
+# Diary-treat --> (This is my side project which concentrates more on Backend part)
 This application is used to store and access the day to day data of the milk in terms of liters and also it's cost.
 
 1) Made use of Python backend web framework called flask to build this application 
